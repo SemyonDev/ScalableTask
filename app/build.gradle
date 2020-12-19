@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BASE_URL", "\"https://messari.io/api/docs\""
+        buildConfigField "String", "BASE_URL", "\"https://messari.io/api\""
     }
 
     buildTypes {
