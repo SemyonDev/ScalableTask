@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_details">
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_details"
+    app:startDestination="@id/homeListFragment">
 
+    <fragment
+        android:id="@+id/homeListFragment"
+        android:name="com.semyong.scalabletask.presentation.fragments.listfragment.HomeListFragment"
+        android:label="HomeListFragment" >
+        <action
+            android:id="@+id/actionGotToDetailsFragment"
+            app:destination="@id/homeListDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeListDetailsFragment"
+        android:name="com.semyong.scalabletask.presentation.fragments.detailsfragment.HomeListDetailsFragment"
+        android:label="HomeListDetailsFragment" />
 </navigation>

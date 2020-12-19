@@ -1,6 +1,7 @@
 package com.semyong.scalabletask
 
 import android.app.Application
+import com.semyong.scalabletask.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -12,7 +13,7 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 listOf(
-
+                    presentationModule
                 )
             )
         }
