@@ -14,5 +14,9 @@
     <fragment
         android:id="@+id/homeListDetailsFragment"
         android:name="com.semyong.scalabletask.presentation.fragments.detailsfragment.HomeListDetailsFragment"
-        android:label="HomeListDetailsFragment" />
+        android:label="HomeListDetailsFragment" >
+        <argument
+            android:name="currencyItem"
+            app:argType="com.semyong.scalabletask.data.entities.CurrencyItem" />
+    </fragment>
 </navigation>

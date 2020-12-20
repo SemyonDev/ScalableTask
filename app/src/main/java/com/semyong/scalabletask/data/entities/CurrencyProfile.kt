@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class CurrencyItem(
+data class CurrencyProfile(
     @field:Json(name = "id")
     val id: String? = null,
     @field:Json(name = "name")
@@ -15,7 +15,6 @@ data class CurrencyItem(
     @field:Json(name = "symbol")
     val symbol: String? = null,
     @field:Json(name = "metrics")
-    val metrics: Metrics? = null,
-    @field:Json(name = "profile")
-    val profile: CurrencyProfile? = null,
+    val metrics: Metrics? = null
 ) : Parcelable
+
