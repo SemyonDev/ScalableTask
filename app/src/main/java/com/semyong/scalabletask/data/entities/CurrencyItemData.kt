@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Metrics(
-    @field:Json(name = "market_data")
-    var marketData: MarketData? = null
+data class CurrencyItemData(
+    @field:Json(name = "data")
+    val data: CurrencyItem? = null
 ) : Parcelable

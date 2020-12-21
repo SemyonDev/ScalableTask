@@ -50,7 +50,7 @@ class HomeListFragment : BaseFragment(), ListItemAction {
         }
     }
 
-    fun observeViewMOodel() {
+    private fun observeViewMOodel() {
         viewModel.mCurrencyListResult.observe(viewLifecycleOwner, Observer {
             it.observe(viewLifecycleOwner, Observer {
                 println(it.toTypedArray().contentToString())

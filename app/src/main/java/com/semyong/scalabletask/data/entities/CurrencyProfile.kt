@@ -6,15 +6,30 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CurrencyProfile(
-    @field:Json(name = "id")
-    val id: String? = null,
-    @field:Json(name = "name")
-    val name: String? = null,
-    @field:Json(name = "slug")
-    val slug: String? = null,
-    @field:Json(name = "symbol")
-    val symbol: String? = null,
-    @field:Json(name = "metrics")
-    val metrics: Metrics? = null
+    @field:Json(name = "general")
+    var general: General? = null
 ) : Parcelable
 
+@Parcelize
+data class General(
+    @field:Json(name = "overview")
+    var overview: Overview? = null
+) : Parcelable
+
+@Parcelize
+data class Overview(
+    @field:Json(name = "tagline")
+    var tagline: String? = null,
+    @field:Json(name = "project_details")
+    var projectDetails: String? = null,
+    @field:Json(name = "official_links")
+    var officialLinks: List<OfficialLinks>? = null
+) : Parcelable
+
+@Parcelize
+data class OfficialLinks(
+    @field:Json(name = "name")
+    var name: String? = null,
+    @field:Json(name = "link")
+    var link: String? = null
+) : Parcelable

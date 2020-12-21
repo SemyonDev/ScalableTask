@@ -18,4 +18,18 @@ data class CurrencyItem(
     val metrics: Metrics? = null,
     @field:Json(name = "profile")
     val profile: CurrencyProfile? = null,
+    @field:Json(name = "values")
+    val valuesList: List<List<Double>>? = null
+) : Parcelable
+
+@Parcelize
+data class MarketData(
+    @field:Json(name = "price_usd")
+    var priceUsd: Double? = null
+) : Parcelable
+
+@Parcelize
+data class Metrics(
+    @field:Json(name = "market_data")
+    var marketData: MarketData? = null
 ) : Parcelable
