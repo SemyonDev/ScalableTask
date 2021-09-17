@@ -21,14 +21,17 @@ class HomeListViewModel(
     private val dataErrorManager: DataErrorManager
 ) : BaseViewModel() {
 
-    val mError: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val mCurrencyListResult: MutableLiveData<LiveData<PagedList<CurrencyItem>>> by lazy { MutableLiveData<LiveData<PagedList<CurrencyItem>>>() }
+    protected val _error: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val mError: LiveData<String> = _error
+
+    protected val _currencyListResult: MutableLiveData<LiveData<PagedList<CurrencyItem>>> by lazy { MutableLiveData<LiveData<PagedList<CurrencyItem>>>() }
+    val mCurrencyListResult: LiveData<LiveData<PagedList<CurrencyItem>>> = _currencyListResult
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
             dataErrorManager.throwableFlow.collect() {
                 it?.let {
-                    mError.postValue(it.toString())
+                    _error.postValue(it.toString())
                     Log.d("Tag", "dataErrorManager = " + it)
                 }
             }
@@ -37,7 +40,7 @@ class HomeListViewModel(
 
     fun getCurrencyItems() {
         val coroutineExceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-            mError.postValue(throwable.stackTrace.toString())
+            _error.postValue(throwable.stackTrace.toString())
             Log.d("Tag", "coroutineExceptionHandler = " + throwable.printStackTrace())
             throwable.printStackTrace()
         }
@@ -51,7 +54,7 @@ class HomeListViewModel(
             val dataSourceFactory = getCurrencyUseCase.getCurrencyList()
 
             withContext(Dispatchers.Main) {
-                mCurrencyListResult.postValue(LivePagedListBuilder(dataSourceFactory, pageConfig).build())
+                _currencyListResult.postValue(LivePagedListBuilder(dataSourceFactory, pageConfig).build())
             }
         }
     }
